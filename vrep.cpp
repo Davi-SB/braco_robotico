@@ -13,31 +13,60 @@ extern "C" {
 #include "extApi.h"
 }
 
-void resetPos(int clientID, simxChar* handlerName, int* handler) {
+void resetJoint1(int clientID, simxChar* handlerName, int* handler){
     strcpy(handlerName, joint1);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
     simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.1 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
+}
 
+void resetJoint2(int clientID, simxChar* handlerName, int* handler) {
     strcpy(handlerName, joint2);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
     simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.2 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
+}
 
+void resetJoint3(int clientID, simxChar* handlerName, int* handler) {
     strcpy(handlerName, joint3);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
     simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.1 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
+}
 
+void resetJoint4(int clientID, simxChar* handlerName, int* handler) {
     strcpy(handlerName, joint4);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
     simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.1 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
+}
 
+void resetJoint5(int clientID, simxChar* handlerName, int* handler) {
     strcpy(handlerName, joint5);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
     simxSetJointTargetPosition(clientID, *handler, (simxFloat)(0.06 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
+}
+
+void resetJoint6(int clientID, simxChar* handlerName, int* handler) {
+    strcpy(handlerName, joint6);
+    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
+    simxSetJointTargetPosition(clientID, *handler, (simxFloat)(0 * PI), (simxInt)simx_opmode_oneshot_wait);
+    extApi_sleepMs(3000);
+}
+
+void resetPos(int clientID, simxChar* handlerName, int* handler) {
+    resetJoint1(clientID, handlerName, handler);
+
+    resetJoint2(clientID, handlerName, handler);
+
+    resetJoint3(clientID, handlerName, handler);
+
+    resetJoint4(clientID, handlerName, handler);
+
+    resetJoint5(clientID, handlerName, handler);
+
+    resetJoint6(clientID, handlerName, handler);
 }
 
 void press0(int clientID, simxChar* handlerName, int* handler) {
@@ -157,32 +186,30 @@ void press3(int clientID, simxChar* handlerName, int* handler) {
 }
 
 void press4(int clientID, simxChar* handlerName, int* handler) {
-    strcpy(handlerName, joint1);
-    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
-    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0 * PI), (simxInt)simx_opmode_oneshot_wait);
-    extApi_sleepMs(3000);
-
-    strcpy(handlerName, joint2);
-    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
-    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0 * PI), (simxInt)simx_opmode_oneshot_wait);
-    extApi_sleepMs(3000);
-
     strcpy(handlerName, joint3);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
-    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0 * PI), (simxInt)simx_opmode_oneshot_wait);
-    extApi_sleepMs(3000);
-
-    strcpy(handlerName, joint4);
-    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
-    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0 * PI), (simxInt)simx_opmode_oneshot_wait);
+    simxSetJointTargetPosition(clientID, *handler, (simxFloat)(0.13 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
 
     strcpy(handlerName, joint5);
     simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
-    simxSetJointTargetPosition(clientID, *handler, (simxFloat)(0 * PI), (simxInt)simx_opmode_oneshot_wait);
+    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.23 * PI), (simxInt)simx_opmode_oneshot_wait);
     extApi_sleepMs(3000);
 
-    resetPos(clientID, handlerName, handler);
+    strcpy(handlerName, joint1);
+    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
+    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.04 * PI), (simxInt)simx_opmode_oneshot_wait);
+    extApi_sleepMs(3000);
+
+    strcpy(handlerName, joint2);
+    simxGetObjectHandle(clientID, (simxChar*)handlerName, handler, (simxInt)simx_opmode_oneshot_wait);
+    simxSetJointTargetPosition(clientID, *handler, (simxFloat)-(0.30 * PI), (simxInt)simx_opmode_oneshot_wait);
+    extApi_sleepMs(3000);
+
+    resetJoint2(clientID, handlerName, handler);
+    resetJoint1(clientID, handlerName, handler);
+    resetJoint5(clientID, handlerName, handler);
+    resetJoint3(clientID, handlerName, handler);
 }
 
 void press5(int clientID, simxChar* handlerName, int* handler) {
@@ -376,9 +403,9 @@ int main(int argc, char* argv[]) {
     else printf("Conectado ao Coppelia!\n");
 
     simxGetObjectHandle(clientID, handlerName, &handler, (simxInt)simx_opmode_oneshot_wait);
-    resetPos(clientID, handlerName, &handler); // define a posicao inicial do braco, prepara para clicar
+    press4(clientID, handlerName, &handler); // define a posicao inicial do braco, prepara para clicar
 
-    arq = fopen("D:\\Estudos\\Faculdade\\IP\\braco_rob\\votos.txt", "rt");
+    arq = fopen("C:\\Users\\DaviD\\OneDrive\\Área de Trabalho\\vrep\\vrep\\votos.txt", "rt");
     if (arq == NULL) { printf("Erro na hora de abrir o arquivo"); exit(1); }
 
     while (!feof(arq)) {
